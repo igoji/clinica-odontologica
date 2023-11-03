@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ClinicaOdontologicaApplication {
 
-	private static Logger logger = LoggerFactory.getLogger(ClinicaOdontologicaApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(ClinicaOdontologicaApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(ClinicaOdontologicaApplication.class, args);
-		logger.info("ClinicaOdontologica is now running...");
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ClinicaOdontologicaApplication.class, args);
+        logger.info("ClinicaOdontologica is now running...");
+    }
 
 }
