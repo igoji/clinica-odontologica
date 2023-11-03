@@ -1,15 +1,12 @@
 package com.backend.clinicaodontologica.test;
 
+import com.backend.clinicaodontologica.model.Domicilio;
+import com.backend.clinicaodontologica.model.Paciente;
 import com.backend.clinicaodontologica.repository.impl.PacienteDaoH2;
 import com.backend.clinicaodontologica.service.PacienteService;
-import com.backend.clinicaodontologica.model.Paciente;
-import com.backend.clinicaodontologica.model.Domicilio;
-
-
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -25,7 +22,8 @@ public class PacienteServiceTest {
         Connection connection = null;
         try {
             Class.forName("org.h2.Driver");
-            connection = DriverManager.getConnection("jdbc:h2:~/c1Clinica;INIT=RUNSCRIPT FROM 'create.sql'", "sa", "sa");
+            connection = DriverManager.getConnection("jdbc:h2:~/c1Clinica;INIT=RUNSCRIPT FROM 'create.sql'", "sa",
+            "sa");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,9 +38,10 @@ public class PacienteServiceTest {
 
 
     @Test
-    void deberiaAgregarUnPaciente(){
+    void deberiaAgregarUnPaciente() {
 
-        Paciente paciente = new Paciente("Nombre", "Apellido", 123456, LocalDate.of(2023, 05, 02), new Domicilio("Calle", 13, "Localidad", "Provincia"));
+        Paciente paciente = new Paciente("Nombre", "Apellido", 123456, LocalDate.of(2023, 05, 02), new Domicilio(
+                "Calle", 13, "Localidad", "Provincia"));
 
         Paciente pacienteRegistrado = pacienteService.registrarPaciente(paciente);
 
@@ -51,7 +50,7 @@ public class PacienteServiceTest {
     }
 
     @Test
-    void deberiaRetornarUnaListaNoVacia(){
+    void deberiaRetornarUnaListaNoVacia() {
 
         assertFalse(pacienteService.listarPacientes().isEmpty());
 

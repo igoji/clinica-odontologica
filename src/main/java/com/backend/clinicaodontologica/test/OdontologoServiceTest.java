@@ -14,13 +14,14 @@ public class OdontologoServiceTest {
 
     private final OdontologoService odontologoService = new OdontologoService(new OdontologoDaoH2());
 
-    /*
-    @BeforeAll
+
+    /*@BeforeAll
     static void doBefore(){
         Connection connection = null;
         try {
             Class.forName("org.h2.Driver");
-            connection = DriverManager.getConnection("jdbc:h2:~/clinicaodontologica;INIT=RUNSCRIPT FROM 'create.sql'", "sa", "sa");
+            connection = DriverManager.getConnection("jdbc:h2:~/c1Clinica;INIT=RUNSCRIPT FROM 'create.sql'", "sa",
+            "sa");
 
         } catch (Exception e){
             e.printStackTrace();
