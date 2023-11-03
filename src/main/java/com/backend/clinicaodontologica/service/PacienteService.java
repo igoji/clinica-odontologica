@@ -1,5 +1,10 @@
 package com.backend.clinicaodontologica.service;
 
+import com.backend.clinicaodontologica.model.Paciente;
+import com.backend.clinicaodontologica.repository.IDao;
+
+import java.util.List;
+
 public class PacienteService {
 
 
