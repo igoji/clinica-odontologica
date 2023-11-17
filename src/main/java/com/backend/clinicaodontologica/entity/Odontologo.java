@@ -1,6 +1,7 @@
 package com.backend.clinicaodontologica.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ODONTOLOGOS")
@@ -9,8 +10,13 @@ public class Odontologo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(length = 50)
     private String matricula;
+
+    @Column(length = 50)
     private String nombre;
+
+    @Column(length = 50)
     private String apellido;
 
     public Odontologo() {
