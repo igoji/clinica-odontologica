@@ -1,8 +1,9 @@
-package com.backend.clinicaodontologica.test;
+package com.backend.clinicaodontologica;
 
-import com.backend.clinicaodontologica.model.Odontologo;
-import com.backend.clinicaodontologica.repository.impl.OdontologoDaoH2;
-import com.backend.clinicaodontologica.service.OdontologoService;
+
+import com.backend.clinicaodontologica.dao.impl.OdontologoDaoH2;
+import com.backend.clinicaodontologica.entity.Odontologo;
+import com.backend.clinicaodontologica.service.impl.OdontologoService;
 import org.junit.Test;
 
 import java.util.List;
@@ -10,18 +11,18 @@ import java.util.List;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class OdontologoServiceTest {
+
+class OdontologoServiceTest {
 
     private final OdontologoService odontologoService = new OdontologoService(new OdontologoDaoH2());
 
-
-    /*@BeforeAll
+    /*
+    @BeforeAll
     static void doBefore(){
         Connection connection = null;
         try {
             Class.forName("org.h2.Driver");
-            connection = DriverManager.getConnection("jdbc:h2:~/c1Clinica;INIT=RUNSCRIPT FROM 'create.sql'", "sa",
-            "sa");
+            connection = DriverManager.getConnection("jdbc:h2:~/c1Clinica;INIT=RUNSCRIPT FROM 'create.sql'", "sa", "sa");
 
         } catch (Exception e){
             e.printStackTrace();
@@ -51,5 +52,6 @@ public class OdontologoServiceTest {
         assertFalse(odontologoList.isEmpty());
 
     }
+
 
 }
