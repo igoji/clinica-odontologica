@@ -5,6 +5,7 @@ import com.backend.clinicaodontologica.dto.entrada.paciente.PacienteEntradaDto;
 import com.backend.clinicaodontologica.dto.modificacion.PacienteModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.clinicaodontologica.entity.Paciente;
+import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
 import com.backend.clinicaodontologica.repository.PacienteRepository;
 import com.backend.clinicaodontologica.service.IPacienteService;
 import com.backend.clinicaodontologica.utils.JsonPrinter;
@@ -78,7 +79,7 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public PacienteSalidaDto actualizarPaciente(PacienteModificacionEntradaDto paciente) {
+    public PacienteSalidaDto actualizarPaciente(PacienteModificacionEntradaDto paciente) throws ResourceNotFoundException{
         Paciente pacienteRecibido = modelMapper.map(paciente, Paciente.class);
         Paciente pacienteAActualizar = pacienteRepository.findById(pacienteRecibido.getId()).orElse(null);
 
@@ -93,7 +94,7 @@ public class PacienteService implements IPacienteService {
 
         } else {
             LOGGER.error("No fue posible actualizar el paciente porque no se encuentra en nuestra base de datos");
-            //lanzar excepcion correspondiente
+            throw new ResourceNotFoundException("No se ha encontrado el paciente con id" + pacienteRecibido.getId());
         }
 
 
@@ -101,13 +102,13 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public void eliminarPaciente(Long id) {
+    public void eliminarPaciente(Long id) throws ResourceNotFoundException {
         if (pacienteRepository.findById(id).orElse(null) != null) {
             pacienteRepository.deleteById(id);
             LOGGER.warn("Se ha eliminado el paciente con id: {}", id);
         } else {
             LOGGER.error("No se ha encontrado el paciente con id {}", id);
-            //excepcion a lanzar aqui
+            throw new ResourceNotFoundException("No se ha encontrado el paciente con id " + id);
         }
 
     }
@@ -125,8 +126,7 @@ public class PacienteService implements IPacienteService {
         modelMapper.typeMap(Paciente.class, PacienteSalidaDto.class)
                 .addMappings(modelMapper -> modelMapper.map(Paciente::getDomicilio, PacienteSalidaDto::setDomicilioSalidaDto));
         modelMapper.typeMap(PacienteModificacionEntradaDto.class, Paciente.class)
-                .addMappings(mapper -> mapper.map(PacienteModificacionEntradaDto::getDomicilioEntradaDto, Paciente::setDomicilio));
-
+                .addMappings(mapper -> mapper.map(PacienteModificacionEntradaDto::getDomicilioModificacionEntradaDto, Paciente::setDomicilio));
     }
 
 
