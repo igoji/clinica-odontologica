@@ -36,15 +36,20 @@ function registrarOdontologo(settings) {
             console.log(response);
 
             if (response.ok != true) {
-                alert(`¡Error! Status: ${response.status}`)
+                alert(`¡Error al Registrar!`)
             }
 
+            if(response.ok){
+                alert(`¡Registro exitoso!`)
+            }
+            
             return response.json();
 
         })
         .then(data => {
             console.log("Promesa cumplida:");
             console.log(data);
+            displayOdontologo(data)
 
             
         }).catch(err => {
@@ -54,13 +59,28 @@ function registrarOdontologo(settings) {
 };
 
 function displayOdontologo(data){
-const odontologo_id = document.getElementById("matricula_display")
+
+const odontologo_id = document.getElementById("odontologo_id")
 const matricula_display = document.getElementById("matricula_display")
 const nombre_display = document.getElementById("nombre_display")
 const apellido_display = document.getElementById("apellido_display")
+const icono = document.getElementById("icono")
+    
 
-odontologo_id.innerHTML = data.
+cardResponse.style.display = "none"
+odontologo_id.style.display = "none"
+icono.src = "./img/failure.png"
+
+if(data.id != undefined){
+    odontologo_id.style.display = "inline"
+    icono.src = "./img/success.png"
+}
+
+odontologo_id.innerHTML = data.id
+matricula_display.innerHTML = data.matricula
+nombre_display.innerHTML = data.nombre
+apellido_display.innerHTML = data.apellido
+
 
 cardResponse.style.display = "block"
-
 }
