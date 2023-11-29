@@ -18,23 +18,23 @@ public class TurnoEntradaDto {
     @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")
     @NotNull(message = "Debe especificarse la fecha y hora del turno a tomar")
     //@JsonProperty("fecha_ingreso")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime fechaYHora;
 
     @NotNull(message = "El odontologo no puede ser nulo")
-    private OdontologoSalidaDto odontologo;
+    private Long odontologo;
     @NotNull(message = "El paciente no puede ser nulo")
-    private PacienteSalidaDto paciente;
+    private Long paciente;
 
     public TurnoEntradaDto() {
     }
 
-    public TurnoEntradaDto(LocalDateTime fechaYHora, OdontologoSalidaDto odontologo, PacienteSalidaDto paciente) {
+
+    public TurnoEntradaDto(LocalDateTime fechaYHora, Long odontologo, Long paciente) {
         this.fechaYHora = fechaYHora;
         this.odontologo = odontologo;
         this.paciente = paciente;
     }
-
 
     public LocalDateTime getFechaYHora() {
         return fechaYHora;
@@ -44,19 +44,19 @@ public class TurnoEntradaDto {
         this.fechaYHora = fechaYHora;
     }
 
-    public OdontologoSalidaDto getOdontologo() {
+    public Long getOdontologo() {
         return odontologo;
     }
 
-    public void setOdontologo(OdontologoSalidaDto odontologo) {
+    public void setOdontologo(Long odontologo) {
         this.odontologo = odontologo;
     }
 
-    public PacienteSalidaDto getPaciente() {
+    public Long getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(PacienteSalidaDto paciente) {
+    public void setPaciente(Long paciente) {
         this.paciente = paciente;
     }
 }
