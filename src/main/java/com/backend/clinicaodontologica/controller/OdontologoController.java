@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/odontologos")
 public class OdontologoController {
@@ -43,7 +44,7 @@ public class OdontologoController {
     }
 
     @PutMapping("/actualizar")
-    public OdontologoSalidaDto actualizarOdontologo(@RequestBody OdontologoModificacionEntradaDto odontologo) throws ResourceNotFoundException {
+    public OdontologoSalidaDto actualizarOdontologo(@RequestBody OdontologoModificacionEntradaDto odontologo){
         return odontologoService.actualizarOdontologo(odontologo);
     }
 

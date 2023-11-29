@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registrar Odontologo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Registrar Odontologo</h2>
+
+    <!-- Form -->
+    <form>
+        <!-- Matricula Field -->
+        <div class="form-group">
+            <label for="matricula">Matricula:</label>
+            <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Ingresa la Matricula">
+        </div>
+
+        <!-- Nombre Field -->
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa el Nombre">
+        </div>
+
+        <!-- Apellido Field -->
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingresa el Apellido">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+<div class="container mt-5 mb-4" id="card-response">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <!-- Left Part (Image) -->
+                <div class="col-md-4">
+                    <img src="your_image_url.jpg" alt="Odontologo Image" class="img-fluid">
+                </div>
+
+                <!-- Right Part (Text) -->
+                <div class="col-md-8">
+                    <p><strong>ID:</strong> <span id="odontologo_id">Your Odontologo ID</span></p>
+                    <p><strong>Matricula:</strong> <span id="matricula_display">Your Matricula</span></p>
+                    <p><strong>Nombre:</strong> <span id="nombre_display">Your Nombre</span></p>
+                    <p><strong>Apellido:</strong> <span id="apellido_display">Your Apellido</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>
