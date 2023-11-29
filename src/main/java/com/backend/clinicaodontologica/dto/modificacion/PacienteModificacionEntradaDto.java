@@ -28,7 +28,7 @@ public class PacienteModificacionEntradaDto {
     private String apellido;
 
     @NotNull(message = "El dni del paciente no puede ser nulo")
-    @Size(max = 12, message = "El nombre debe tener hasta 12 digitos")
+    @Size(max = 12, message = "El dni debe tener hasta 12 digitos")
     private Integer dni;
 
     @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")

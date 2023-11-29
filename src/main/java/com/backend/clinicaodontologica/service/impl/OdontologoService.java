@@ -25,8 +25,10 @@ public class OdontologoService implements IOdontologoService {
 
     private ModelMapper modelMapper;
 
-    public OdontologoService(OdontologoRepository odontologoRepository) {
+    public OdontologoService(OdontologoRepository odontologoRepository, ModelMapper modelMapper) {
         this.odontologoRepository = odontologoRepository;
+        this.modelMapper = modelMapper;
+        configureMapping();
     }
 
     @Override
@@ -104,10 +106,11 @@ public class OdontologoService implements IOdontologoService {
         return odontologoSalidaDto;
     }
 
-    /*
+
     private void configureMapping(){
         modelMapper.typeMap(OdontologoEntradaDto.class, Odontologo.class);
         modelMapper.typeMap(Odontologo.class, OdontologoSalidaDto.class);
+        modelMapper.typeMap(OdontologoModificacionEntradaDto.class, Odontologo.class);
     }
-     */
+
 }
