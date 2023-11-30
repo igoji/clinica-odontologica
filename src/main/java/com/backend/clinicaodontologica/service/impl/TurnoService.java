@@ -42,7 +42,7 @@ public class TurnoService implements ITurnoService {
     public List<TurnoSalidaDto> listarTurnos() {
         List<TurnoSalidaDto> listaTurnos = turnoRepository.findAll()
                 .stream()
-                .map(turno -> modelMapper.map(turno, TurnoSalidaDto.class))
+                .map(this::entidadADto)
                 .toList();
 
         if (LOGGER.isInfoEnabled())
@@ -56,7 +56,7 @@ public class TurnoService implements ITurnoService {
         TurnoSalidaDto turnoEncontrado = null;
 
         if (turnoBuscado != null) {
-            turnoEncontrado = modelMapper.map(turnoBuscado, TurnoSalidaDto.class);
+            turnoEncontrado = entidadADto(turnoBuscado);
             LOGGER.info("Turno encontrado: {}", JsonPrinter.toString(turnoEncontrado));
         } else LOGGER.error("El id no se encuentra registrado en la base de datos");
 
@@ -131,21 +131,5 @@ public class TurnoService implements ITurnoService {
         return turnoSalidaDto;
     }
 
-
-
-/*
-    private void configureMapping() {
-        modelMapper.typeMap(TurnoEntradaDto.class, Turno.class);
-                /*.addMappings(mapper -> mapper.map(TurnoEntradaDto::getOdontologo, Turno::setOdontologo))
-                .addMappings(mapper -> mapper.map(TurnoEntradaDto::getPaciente, Turno::setPaciente));
-        modelMapper.typeMap(Turno.class, TurnoSalidaDto.class)
-                .addMappings(mapper -> mapper.map(Turno::getOdontologo, TurnoSalidaDto::setOdontologoSalidaDto))
-                .addMappings(mapper -> mapper.map(Turno::getPaciente, TurnoSalidaDto::setPacienteSalidaDto));
-        modelMapper.typeMap(TurnoModificacionEntradaDto.class, Turno.class)
-                .addMappings(mapper -> mapper.map(TurnoModificacionEntradaDto::getOdontologo, Turno::setOdontologo))
-                .addMappings(mapper -> mapper.map(TurnoModificacionEntradaDto::getPaciente, Turno::setPaciente));
-
-    }
-*/
 
 }
