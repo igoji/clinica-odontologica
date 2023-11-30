@@ -1,17 +1,6 @@
 package com.backend.clinicaodontologica.service;
 
 
-import com.backend.clinicaodontologica.dao.impl.OdontologoDaoH2;
-import com.backend.clinicaodontologica.entity.Odontologo;
-import com.backend.clinicaodontologica.service.impl.OdontologoService;
-import org.junit.Test;
-
-import java.util.List;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-
 class OdontologoServiceTest {
 /*
     private final OdontologoService odontologoService = new OdontologoService(new OdontologoDaoH2());

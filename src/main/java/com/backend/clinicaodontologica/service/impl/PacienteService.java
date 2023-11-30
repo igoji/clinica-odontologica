@@ -22,9 +22,9 @@ public class PacienteService implements IPacienteService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(PacienteService.class);
 
-    private PacienteRepository pacienteRepository;
+    private final PacienteRepository pacienteRepository;
 
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Autowired //no es necesario ponerlo
     public PacienteService(PacienteRepository pacienteRepository, ModelMapper modelMapper) {
@@ -79,7 +79,7 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public PacienteSalidaDto actualizarPaciente(PacienteModificacionEntradaDto paciente){
+    public PacienteSalidaDto actualizarPaciente(PacienteModificacionEntradaDto paciente) {
         Paciente pacienteRecibido = modelMapper.map(paciente, Paciente.class);
         Paciente pacienteAActualizar = pacienteRepository.findById(pacienteRecibido.getId()).orElse(null);
 
@@ -121,9 +121,11 @@ public class PacienteService implements IPacienteService {
         modelMapper.typeMap(PacienteEntradaDto.class, Paciente.class)
                 .addMappings(mapper -> mapper.map(PacienteEntradaDto::getDomicilioEntradaDto, Paciente::setDomicilio));
         modelMapper.typeMap(Paciente.class, PacienteSalidaDto.class)
-                .addMappings(modelMapper -> modelMapper.map(Paciente::getDomicilio, PacienteSalidaDto::setDomicilioSalidaDto));
+                .addMappings(modelMapper -> modelMapper.map(Paciente::getDomicilio,
+                        PacienteSalidaDto::setDomicilioSalidaDto));
         modelMapper.typeMap(PacienteModificacionEntradaDto.class, Paciente.class)
-                    .addMappings(mapper -> mapper.map(PacienteModificacionEntradaDto::getDomicilioModificacionEntradaDto, Paciente::setDomicilio));
+                .addMappings(mapper -> mapper.map(PacienteModificacionEntradaDto::getDomicilioModificacionEntradaDto,
+                        Paciente::setDomicilio));
     }
 
 

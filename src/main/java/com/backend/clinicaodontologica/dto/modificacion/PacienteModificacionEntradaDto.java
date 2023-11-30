@@ -1,6 +1,5 @@
 package com.backend.clinicaodontologica.dto.modificacion;
 
-import com.backend.clinicaodontologica.dto.entrada.paciente.DomicilioEntradaDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -43,7 +42,9 @@ public class PacienteModificacionEntradaDto {
     public PacienteModificacionEntradaDto() {
     }
 
-    public PacienteModificacionEntradaDto(Long id, String nombre, String apellido, Integer dni, LocalDate fechaIngreso, DomicilioModificacionEntradaDto domicilioModificacionEntradaDto) {
+    public PacienteModificacionEntradaDto(Long id, String nombre, String apellido, Integer dni,
+                                          LocalDate fechaIngreso,
+                                          DomicilioModificacionEntradaDto domicilioModificacionEntradaDto) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

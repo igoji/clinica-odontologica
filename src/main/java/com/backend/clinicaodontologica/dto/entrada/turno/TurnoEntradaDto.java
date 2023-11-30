@@ -1,13 +1,8 @@
 package com.backend.clinicaodontologica.dto.entrada.turno;
 
-import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaDto;
-import com.backend.clinicaodontologica.dto.entrada.paciente.PacienteEntradaDto;
-import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
-import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.validation.Valid;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;

@@ -13,10 +13,11 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/pacientes")
 public class PacienteController {
 
-    private IPacienteService pacienteService;
+    private final IPacienteService pacienteService;
 
     public PacienteController(IPacienteService pacienteService) {
         this.pacienteService = pacienteService;
@@ -42,7 +43,7 @@ public class PacienteController {
 
     //PUT
     @PutMapping("/actualizar")
-    public PacienteSalidaDto actualizarPaciente(@RequestBody PacienteModificacionEntradaDto paciente){
+    public PacienteSalidaDto actualizarPaciente(@RequestBody PacienteModificacionEntradaDto paciente) {
         return pacienteService.actualizarPaciente(paciente);
     }
 
