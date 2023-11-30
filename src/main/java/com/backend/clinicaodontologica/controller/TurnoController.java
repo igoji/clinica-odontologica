@@ -1,6 +1,7 @@
 package com.backend.clinicaodontologica.controller;
 
 import com.backend.clinicaodontologica.dto.entrada.turno.TurnoEntradaDto;
+import com.backend.clinicaodontologica.dto.modificacion.TurnoModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
 import com.backend.clinicaodontologica.entity.Turno;
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
@@ -33,9 +34,27 @@ public class TurnoController {
         return new ResponseEntity<>(turnoService.listarTurnos(), HttpStatus.OK);
     }
 
+
+    @GetMapping("{id}")
+    public ResponseEntity<TurnoSalidaDto> obtenerTurnoPorId(@PathVariable Long id) {
+        return new ResponseEntity<>(turnoService.buscarTurnoPorId(id), HttpStatus.OK);
+    }
+
     @PostMapping("/registrar")
     public ResponseEntity<TurnoSalidaDto> registrarTurno(@RequestBody @Valid TurnoEntradaDto turno) throws BadRequestException {
         return new ResponseEntity<>(turnoService.registrarTurno(turno), HttpStatus.CREATED);
     }
+
+    @PutMapping("actualizar")
+    public ResponseEntity<TurnoSalidaDto> actualizarTurno(@Valid @RequestBody TurnoModificacionEntradaDto turnoModificacionEntradaDto) throws ResourceNotFoundException {
+        return new ResponseEntity<>(turnoService.actualizarTurno(turnoModificacionEntradaDto), HttpStatus.OK);
+    }
+
+    @DeleteMapping("eliminar/{id}")
+    public ResponseEntity<?> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException {
+        turnoService.eliminarTurno(id);
+        return new ResponseEntity<>("Turno eliminado correctamente", HttpStatus.OK);
+    }
+
 
 }
