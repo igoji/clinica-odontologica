@@ -3,6 +3,7 @@ package com.backend.clinicaodontologica.service;
 import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.backend.clinicaodontologica.dto.modificacion.OdontologoModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
+import com.backend.clinicaodontologica.exceptions.BadRequestException;
 import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
 
 import java.util.List;
