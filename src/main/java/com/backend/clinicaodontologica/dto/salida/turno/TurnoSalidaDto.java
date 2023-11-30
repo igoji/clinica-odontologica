@@ -1,26 +1,24 @@
 package com.backend.clinicaodontologica.dto.salida.turno;
-
-import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
-import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
 
 public class TurnoSalidaDto {
 
     private Long id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime fechaYHora;
-    private OdontologoSalidaDto odontologoSalidaDto;
-    private PacienteSalidaDto pacienteSalidaDto;
+    private OdontologoTurnoSalidaDto odontologoTurnoSalidaDto;
+    private PacienteTurnoSalidaDto pacienteTurnoSalidaDto;
 
     public TurnoSalidaDto() {
     }
 
-    public TurnoSalidaDto(Long id, LocalDateTime fechaYHora, OdontologoSalidaDto odontologoSalidaDto,
-                          PacienteSalidaDto pacienteSalidaDto) {
+    public TurnoSalidaDto(Long id, LocalDateTime fechaYHora, OdontologoTurnoSalidaDto odontologoTurnoSalidaDto, PacienteTurnoSalidaDto pacienteTurnoSalidaDto) {
         this.id = id;
         this.fechaYHora = fechaYHora;
-        this.odontologoSalidaDto = odontologoSalidaDto;
-        this.pacienteSalidaDto = pacienteSalidaDto;
+        this.odontologoTurnoSalidaDto = odontologoTurnoSalidaDto;
+        this.pacienteTurnoSalidaDto = pacienteTurnoSalidaDto;
     }
 
     public Long getId() {
@@ -39,19 +37,19 @@ public class TurnoSalidaDto {
         this.fechaYHora = fechaYHora;
     }
 
-    public OdontologoSalidaDto getOdontologoSalidaDto() {
-        return odontologoSalidaDto;
+    public OdontologoTurnoSalidaDto getOdontologoTurnoSalidaDto() {
+        return odontologoTurnoSalidaDto;
     }
 
-    public void setOdontologoSalidaDto(OdontologoSalidaDto odontologoSalidaDto) {
-        this.odontologoSalidaDto = odontologoSalidaDto;
+    public void setOdontologoTurnoSalidaDto(OdontologoTurnoSalidaDto odontologoTurnoSalidaDto) {
+        this.odontologoTurnoSalidaDto = odontologoTurnoSalidaDto;
     }
 
-    public PacienteSalidaDto getPacienteSalidaDto() {
-        return pacienteSalidaDto;
+    public PacienteTurnoSalidaDto getPacienteTurnoSalidaDto() {
+        return pacienteTurnoSalidaDto;
     }
 
-    public void setPacienteSalidaDto(PacienteSalidaDto pacienteSalidaDto) {
-        this.pacienteSalidaDto = pacienteSalidaDto;
+    public void setPacienteTurnoSalidaDto(PacienteTurnoSalidaDto pacienteTurnoSalidaDto) {
+        this.pacienteTurnoSalidaDto = pacienteTurnoSalidaDto;
     }
 }
