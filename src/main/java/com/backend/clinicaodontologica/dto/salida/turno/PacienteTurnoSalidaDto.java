@@ -3,7 +3,6 @@ package com.backend.clinicaodontologica.dto.salida.turno;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class PacienteTurnoSalidaDto {
 
         private Long id;

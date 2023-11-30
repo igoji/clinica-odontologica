@@ -31,8 +31,7 @@ public class TurnoService implements ITurnoService {
     private final OdontologoService odontologoService;
 
     @Autowired
-    public TurnoService(TurnoRepository turnoRepository, ModelMapper modelMapper, PacienteService pacienteService,
-                        OdontologoService odontologoService) {
+    public TurnoService(TurnoRepository turnoRepository, ModelMapper modelMapper, PacienteService pacienteService, OdontologoService odontologoService) {
         this.turnoRepository = turnoRepository;
         this.modelMapper = modelMapper;
         this.pacienteService = pacienteService;
@@ -69,8 +68,8 @@ public class TurnoService implements ITurnoService {
 
         TurnoSalidaDto turnoSalidaDto;
 
-        PacienteSalidaDto paciente = pacienteService.buscarPacientePorId(turnoEntradaDto.getPaciente());
-        OdontologoSalidaDto odontologo = odontologoService.buscarOdontologoPorId(turnoEntradaDto.getOdontologo());
+        PacienteSalidaDto paciente = pacienteService.buscarPacientePorId(turnoEntradaDto.getPacienteId());
+        OdontologoSalidaDto odontologo = odontologoService.buscarOdontologoPorId(turnoEntradaDto.getOdontologoId());
 
         String pacienteNoEnBdd = "El paciente no se encuentra en nuestra base de datos";
         String odontologoNoEnBdd = "El odontologo no se encuentra en nuestra base de datos";
@@ -95,6 +94,7 @@ public class TurnoService implements ITurnoService {
         }
 
         return turnoSalidaDto;
+
     }
 
 
