@@ -101,24 +101,47 @@ public class TurnoService implements ITurnoService {
 
     @Override
     public TurnoSalidaDto actualizarTurno(TurnoModificacionEntradaDto turno) throws ResourceNotFoundException{
+
         Turno turnoRecibido = modelMapper.map(turno, Turno.class);
-        Turno turnoAActualizar = turnoRepository.findById(turnoRecibido.getId()).orElse(null);
+        Turno turnoAActualizar = turnoRepository.findById(turno.getId()).orElse(null);
 
-        TurnoSalidaDto turnoSalidaDto = null;
+        TurnoSalidaDto turnoSalidaDto;
 
-        if (turnoAActualizar != null){
-            turnoAActualizar = turnoRecibido;
-            turnoRepository.save(turnoAActualizar);
+        String pacienteNoEnBdd = "El paciente no se encuentra en nuestra base de datos";
+        String odontologoNoEnBdd = "El odontologo no se encuentra en nuestra base de datos";
 
-            turnoSalidaDto = modelMapper.map(turnoAActualizar, TurnoSalidaDto.class);
-            LOGGER.warn("Turno actualizado: {}", JsonPrinter.toString(turnoSalidaDto));
-        } else {
+        if (turnoAActualizar == null) {
+
             LOGGER.error("No fue posible actualizar el turno porque no se encuentra en nuestra base de datos");
             throw new ResourceNotFoundException("No se ha encontrado el turno con ese id ");
+
+        } else {
+            LOGGER.info("Turno encontrado: " + JsonPrinter.toString(turnoAActualizar));
+
+            PacienteSalidaDto paciente = pacienteService.buscarPacientePorId(turno.getPacienteId());
+            OdontologoSalidaDto odontologo = odontologoService.buscarOdontologoPorId(turno.getOdontologoId());
+
+            if (paciente == null || odontologo == null) {
+                if (paciente == null && odontologo == null) {
+                    LOGGER.error("El paciente y el odontologo no se encuentran en nuestra base de datos");
+                    throw new ResourceNotFoundException("El paciente y el odontologo no se encuentran en nuestra base de datos");
+                } else if (paciente == null) {
+                    LOGGER.error(pacienteNoEnBdd);
+                    throw new ResourceNotFoundException(pacienteNoEnBdd);
+                } else {
+                    LOGGER.error(odontologoNoEnBdd);
+                    throw new ResourceNotFoundException(odontologoNoEnBdd);
+                }
+            } else {
+
+                turnoAActualizar = turnoRecibido;
+                turnoRepository.save(turnoAActualizar);
+
+                turnoSalidaDto = entidadADto(turnoAActualizar);
+                LOGGER.warn("Turno actualizado: {}", JsonPrinter.toString(turnoSalidaDto));
+            }
         }
-
-
-        return null;
+        return turnoSalidaDto;
     }
 
     @Override
