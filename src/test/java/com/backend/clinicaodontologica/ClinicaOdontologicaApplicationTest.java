@@ -1,13 +1,15 @@
 package com.backend.clinicaodontologica;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testng.annotations.Test;
 
 @SpringBootTest
-class ClinicaOdontologicaApplicationTests {
+class ClinicaOdontologicaApplicationTest {
 
     @Test
-    void contextLoads() {
+    void contextLoads(){
+
     }
+
 
 }
