@@ -133,7 +133,9 @@ public class TurnoService implements ITurnoService {
                 }
             } else {
 
-                turnoAActualizar = turnoRecibido;
+                turnoAActualizar.setPaciente(turnoRecibido.getPaciente());
+                turnoAActualizar.setOdontologo(turnoRecibido.getOdontologo());
+                turnoAActualizar.setFechaYHora(turnoRecibido.getFechaYHora());
                 turnoRepository.save(turnoAActualizar);
 
                 turnoSalidaDto = entidadADto(turnoAActualizar);
