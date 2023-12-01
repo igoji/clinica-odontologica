@@ -98,9 +98,8 @@ public class TurnoService implements ITurnoService {
     }
 
 
-
     @Override
-    public TurnoSalidaDto actualizarTurno(TurnoModificacionEntradaDto turno) throws ResourceNotFoundException{
+    public TurnoSalidaDto actualizarTurno(TurnoModificacionEntradaDto turno) throws ResourceNotFoundException {
 
         Turno turnoRecibido = modelMapper.map(turno, Turno.class);
         Turno turnoAActualizar = turnoRepository.findById(turno.getId()).orElse(null);

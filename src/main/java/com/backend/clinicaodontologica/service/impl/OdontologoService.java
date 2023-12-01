@@ -5,7 +5,6 @@ import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaD
 import com.backend.clinicaodontologica.dto.modificacion.OdontologoModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.clinicaodontologica.entity.Odontologo;
-import com.backend.clinicaodontologica.exceptions.BadRequestException;
 import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
 import com.backend.clinicaodontologica.repository.OdontologoRepository;
 import com.backend.clinicaodontologica.service.IOdontologoService;
